@@ -274,7 +274,32 @@ module ReaderTags
       end
     end
   end
-    
+  
+  desc 'Link to Edit Reader Preferences'
+  tag 'reader:preferences' do |tag|
+    %{<a href="#{edit_reader_path(tag.locals.reader)}">Preferences</a>}
+  end
+  
+  desc 'Reader Profile Page'
+  tag 'reader:profile' do |tag|
+    "<a href='#{reader_path(tag.locals.reader)}'>#{tag.attr['label'] || 'Profile'}</a>"
+  end
+  
+  desc 'Reader Link to Admin Page'
+  tag 'reader:admin' do |tag|
+    "<a href='/admin'>#{tag.attr['label'] || 'Admin'}</a>"
+  end
+
+  desc 'Reader Link to Logout'
+  tag 'reader:logout' do |tag|
+    "<a href='#{reader_logout_path}'>#{tag.attr['label'] || 'Log Out'}</a>"
+  end
+
+  desc 'Reader Link to Login'
+  tag 'reader_login' do |tag|
+    "<a href='#{reader_login_path}'>#{tag.attr['label'] || 'Log In'}</a>"
+  end
+      
   desc %{
     Expands only if there is a reader and we are on an uncached page.
     
